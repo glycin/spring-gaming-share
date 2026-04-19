@@ -1,0 +1,6 @@
+game:
+  settings:
+    beat:
+      initial-bpm: 130
+    countdown-pun: "Now playing 'Boot, Load, Run'..."
+    music-path: "music/easy_song.wav"

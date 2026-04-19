@@ -1,0 +1,13 @@
+
+${AnsiColor.BRIGHT_BLACK}                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${AnsiColor.DEFAULT}
+
+${AnsiColor.RED}                    ██    ██  ██████  ██    ██     ██████  ██ ██████ ██████
+                     ██  ██  ██    ██ ██    ██     ██   ██ ██ ██      ██   ██
+                      ████   ██    ██ ██    ██     ██   ██ ██ ██████  ██   ██
+                       ██    ██    ██ ██    ██     ██   ██ ██ ██      ██   ██
+                       ██     ██████   ██████      ██████  ██ ██████  ██████${AnsiColor.DEFAULT}
+
+${AnsiColor.BRIGHT_BLACK}                         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${AnsiColor.DEFAULT}
+
+${AnsiColor.BRIGHT_BLACK}                             ~ ${AnsiColor.BRIGHT_YELLOW}:: Spring Souls :: ${AnsiColor.BRIGHT_WHITE}(v1337)${AnsiColor.DEFAULT} ~${AnsiColor.DEFAULT}
+

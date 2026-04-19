@@ -1,0 +1,269 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "links": [],
+  "panels": [
+    {
+      "title": "Beats Hit",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 0 },
+      "id": 1,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "increase(beats_hit_total[1m])",
+          "legendFormat": "Beats Hit",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "color": { "mode": "fixed", "fixedColor": "green" }, "custom": { "lineWidth": 2, "fillOpacity": 20 } },
+        "overrides": []
+      }
+    },
+    {
+      "title": "Beats Missed",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 0 },
+      "id": 2,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "increase(beats_missed_total[1m])",
+          "legendFormat": "Beats Missed",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "color": { "mode": "fixed", "fixedColor": "red" }, "custom": { "lineWidth": 2, "fillOpacity": 20 } },
+        "overrides": []
+      }
+    },
+    {
+      "title": "Highest Combo",
+      "type": "gauge",
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 0 },
+      "id": 3,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "combo_highest",
+          "legendFormat": "Highest Combo",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 10 },
+              { "color": "yellow", "value": 25 },
+              { "color": "green", "value": 50 }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "title": "Enemies Defeated",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "id": 4,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "increase(enemies_defeated_total[1m])",
+          "legendFormat": "{{ enemy_type }}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "lineWidth": 2, "fillOpacity": 20 } },
+        "overrides": []
+      }
+    },
+    {
+      "title": "Upgrades Chosen",
+      "type": "table",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "id": 5,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "upgrades_chosen_total",
+          "legendFormat": "{{ upgrade_name }}",
+          "refId": "A",
+          "instant": true,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "instance": true,
+              "job": true
+            },
+            "renameByName": {
+              "upgrade_name": "Upgrade",
+              "Value": "Times Chosen"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "title": "Total Enemies Defeated",
+      "type": "stat",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 },
+      "id": 6,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(enemies_defeated_total)",
+          "legendFormat": "Total Defeated",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 50 },
+              { "color": "orange", "value": 200 }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "title": "Total Beats",
+      "type": "stat",
+      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 16 },
+      "id": 7,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "beats_total",
+          "legendFormat": "Total Beats",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "blue", "value": null },
+              { "color": "purple", "value": 100 },
+              { "color": "orange", "value": 300 }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "title": "Total Deaths",
+      "type": "stat",
+      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 16 },
+      "id": 8,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "deaths_total",
+          "legendFormat": "Deaths",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "fixed", "fixedColor": "dark-red" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 1 }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "title": "JVM Heap Memory",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "id": 9,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "jvm_memory_used_bytes{area=\"heap\"}",
+          "legendFormat": "Used ({{ id }})",
+          "refId": "A"
+        },
+        {
+          "expr": "jvm_memory_committed_bytes{area=\"heap\"}",
+          "legendFormat": "Committed ({{ id }})",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "bytes", "custom": { "lineWidth": 1, "fillOpacity": 10 } },
+        "overrides": []
+      }
+    },
+    {
+      "title": "JVM Threads",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+      "id": 10,
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "jvm_threads_live_threads",
+          "legendFormat": "Live",
+          "refId": "A"
+        },
+        {
+          "expr": "jvm_threads_daemon_threads",
+          "legendFormat": "Daemon",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "lineWidth": 2, "fillOpacity": 10 } },
+        "overrides": []
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["spring-survivors", "game"],
+  "templating": { "list": [] },
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Spring Survivors",
+  "uid": "spring-survivors-dashboard",
+  "version": 1,
+  "refresh": "5s"
+}

@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: spring-rhythm-survivors
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+        step: 5s
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %clr(%-5level){blue} %clr(%logger{36}){green}-%msg%n'
+
+game:
+  settings:
+    fps: 60
+    cron: "*/16 * * * * * *"
+    window-width: 1200
+    window-height: 800
+    grid-size: 16
+    enemy:
+      hp: 1
+    projectile:
+      speed: 5.0
+      size: 8
+    spawning:
+      max-enemies: 200
+      interval: 5
+      count-min: 1
+      count-max: 3
+    xp:
+      xp-per-level: 20
+      xp-gained: 10
+      xp-growth-factor: 1.0
+    beat:
+      initial-bpm: 130
+      beat-tolerance-ratio: 0.6
+      bpm-escalation: []
+    countdown-pun: "Are you ready to Spring & Roll?!"
+    music-path: "music/demo_song.wav"

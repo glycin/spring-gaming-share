@@ -1,0 +1,239 @@
+{
+  "title": "Spring Souls",
+  "uid": "spring-souls",
+  "tags": ["spring-souls", "game"],
+  "editable": true,
+  "panels": [
+    {
+      "title": "Player HP",
+      "type": "gauge",
+      "gridPos": { "h": 8, "w": 6, "x": 0, "y": 0 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "player_hp", "legendFormat": "HP" }],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 20 },
+              { "color": "green", "value": 50 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Stamina",
+      "type": "gauge",
+      "gridPos": { "h": 8, "w": 6, "x": 6, "y": 0 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "player_stamina", "legendFormat": "Stamina" }],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "yellow", "value": 30 },
+              { "color": "green", "value": 60 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Lord of Beans HP",
+      "type": "gauge",
+      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 0 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "boss_hp", "legendFormat": "Boss HP" }],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 400,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 100 },
+              { "color": "dark-red", "value": 200 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Potion Charges",
+      "type": "stat",
+      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 0 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "player_potion_charges", "legendFormat": "Charges" }]
+    },
+    {
+      "title": "Player Health Status",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 8 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "player_hp > bool 0", "legendFormat": "Status" }],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            { "type": "value", "options": { "0": { "text": "DOWN", "color": "red" } } },
+            { "type": "value", "options": { "1": { "text": "UP", "color": "green" } } }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        }
+      },
+      "options": { "colorMode": "background" }
+    },
+    {
+      "title": "Player HP Over Time",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "player_hp", "legendFormat": "HP" }],
+      "fieldConfig": { "defaults": { "min": 0, "max": 100, "color": { "mode": "fixed", "fixedColor": "red" } } }
+    },
+    {
+      "title": "Player Stamina Over Time",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "player_stamina", "legendFormat": "Stamina" }],
+      "fieldConfig": { "defaults": { "min": 0, "max": 100, "color": { "mode": "fixed", "fixedColor": "green" } } }
+    },
+    {
+      "title": "Deaths Over Time",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "increase(deaths_total[1m])", "legendFormat": "{{ cause }}" }]
+    },
+    {
+      "title": "Enemies Killed",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 16 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "increase(enemies_killed_total[1m])", "legendFormat": "{{ enemy_type }}" }]
+    },
+    {
+      "title": "Damage Dealt",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "rate(damage_dealt_sum[1m])", "legendFormat": "{{ weapon }}" }]
+    },
+    {
+      "title": "Boss Fight Duration",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "boss_fight_duration_seconds_max", "legendFormat": "{{ boss_name }} ({{ outcome }})" }]
+    },
+    {
+      "title": "Game Tick Duration (ms)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 32 },
+      "datasource": "Prometheus",
+      "targets": [{ "expr": "rate(game_tick_duration_milliseconds_sum[1m]) / rate(game_tick_duration_milliseconds_count[1m])", "legendFormat": "avg tick ms" }],
+      "fieldConfig": { "defaults": { "unit": "ms" } }
+    },
+    {
+      "title": "Potions Used",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 32 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "increase(potions_used_total[5m])", "legendFormat": "Potions" }
+      ]
+    },
+    {
+      "title": "Dodge Rolls",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 32 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "increase(dodge_rolls_total[1m])", "legendFormat": "Dodges" }
+      ]
+    },
+    {
+      "title": "JVM Heap Memory",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 40 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "jvm_memory_used_bytes{area=\"heap\"}", "legendFormat": "Used ({{ id }})" },
+        { "expr": "jvm_memory_committed_bytes{area=\"heap\"}", "legendFormat": "Committed ({{ id }})" },
+        { "expr": "jvm_memory_max_bytes{area=\"heap\"}", "legendFormat": "Max ({{ id }})" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "bytes" } }
+    },
+    {
+      "title": "JVM Non-Heap Memory",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 40 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "jvm_memory_used_bytes{area=\"nonheap\"}", "legendFormat": "Used ({{ id }})" },
+        { "expr": "jvm_memory_committed_bytes{area=\"nonheap\"}", "legendFormat": "Committed ({{ id }})" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "bytes" } }
+    },
+    {
+      "title": "GC Pauses",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 48 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "rate(jvm_gc_pause_milliseconds_sum[1m])", "legendFormat": "GC ms/sec ({{ action }}, {{ cause }})" },
+        { "expr": "rate(jvm_gc_pause_milliseconds_count[1m])", "legendFormat": "GC count/sec ({{ action }}, {{ cause }})" }
+      ]
+    },
+    {
+      "title": "JVM Threads",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 48 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "jvm_threads_live", "legendFormat": "Live" },
+        { "expr": "jvm_threads_daemon", "legendFormat": "Daemon" },
+        { "expr": "jvm_threads_peak", "legendFormat": "Peak" }
+      ]
+    },
+    {
+      "title": "CPU Usage",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 56 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "process_cpu_usage", "legendFormat": "Process CPU" },
+        { "expr": "system_cpu_usage", "legendFormat": "System CPU" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percentunit", "min": 0, "max": 1 } }
+    },
+    {
+      "title": "Loaded Classes",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 56 },
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "jvm_classes_loaded", "legendFormat": "Loaded" },
+        { "expr": "jvm_classes_unloaded_total", "legendFormat": "Unloaded (total)" }
+      ]
+    }
+  ],
+  "time": { "from": "now-15m", "to": "now" },
+  "refresh": "5s",
+  "schemaVersion": 39
+}

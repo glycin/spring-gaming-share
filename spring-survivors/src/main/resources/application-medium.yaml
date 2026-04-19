@@ -1,0 +1,6 @@
+game:
+  settings:
+    beat:
+      initial-bpm: 160
+    countdown-pun: "Now playing 'I hate daily Standups'..."
+    music-path: "music/medium_song.wav"

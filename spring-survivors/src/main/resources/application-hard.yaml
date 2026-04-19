@@ -1,0 +1,6 @@
+game:
+  settings:
+    beat:
+      initial-bpm: 200
+    countdown-pun: "Through the Fire and the @Transactional"
+    music-path: "music/hard_song.wav"

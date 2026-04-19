@@ -1,0 +1,19 @@
+${AnsiColor.BLACK}                                            _.gd8888888bp._
+${AnsiColor.BLACK}                                         .g88888888888888888p.
+${AnsiColor.BLACK}                                       .d8888P""       ""Y8888b.
+${AnsiColor.BLACK}                                       "Y8P"               "Y8P'
+${AnsiColor.BRIGHT_WHITE}                                          `.               ,'
+${AnsiColor.BRIGHT_WHITE}                                            \     .-.     /
+${AnsiColor.BRIGHT_WHITE}                                             \   (___)   /
+${AnsiColor.BRIGHT_WHITE}  .------------------._______________________:__________j
+${AnsiColor.BRIGHT_WHITE} /                   |                      |           |`-.,_
+${AnsiColor.BRIGHT_WHITE} \###################|######################|###########|,-'`
+${AnsiColor.BRIGHT_WHITE}  `------------------'                       :    ___   l
+${AnsiColor.BRIGHT_WHITE}                                             /   (   )   \
+${AnsiColor.BRIGHT_WHITE}                                    fsc     /     `-'     \
+${AnsiColor.BRIGHT_WHITE}                                          ,'               `.
+${AnsiColor.BLACK}                                       .d8b.               .d8b.
+${AnsiColor.BLACK}                                       "Y8888p..       ,.d8888P"
+${AnsiColor.BLACK}                                         "Y88888888888888888P"
+${AnsiColor.BLACK}                                            ""YY8888888PP""⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${AnsiColor.BRIGHT_YELLOW}:: SpringCraft :: ${AnsiColor.BRIGHT_WHITE}(v9000)${AnsiColor.DEFAULT}

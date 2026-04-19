@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-aria
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %clr(%-5level){blue} %clr(%logger{36}){green}-%msg%n'
+game:
+  settings:
+    fps: 60
+    window-width: 1200
+    window-height: 800
+    sound-muted: false
+    jump-force: -5.5
+    player-speed: 2.0
